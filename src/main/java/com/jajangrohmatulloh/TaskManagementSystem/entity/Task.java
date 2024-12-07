@@ -2,6 +2,8 @@ package com.jajangrohmatulloh.TaskManagementSystem.entity;
 
 import java.sql.Timestamp;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,15 +30,13 @@ public class Task {
 
     private String description;
 
+    @JsonProperty("latest_time")
     @Column(name = "latest_time")
     private Timestamp latestTime;
 
     private String status;
 
-    @Column(name = "owner_id")
-    private Integer ownerId;
-
     @ManyToOne
-    @JoinColumn(name = "owner_id")
-    private User user; // Maps to `users` table (optional)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 }
