@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -34,7 +36,7 @@ public class Task {
     @Column(name = "owner_id")
     private Integer ownerId;
 
-    // @ManyToOne
-    // @JoinColumn(name = "owner_id")
-    // private User owner; // Maps to `users` table (optional)
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
+    private User user; // Maps to `users` table (optional)
 }
